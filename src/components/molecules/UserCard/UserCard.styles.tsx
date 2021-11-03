@@ -1,21 +1,23 @@
 import styled from "styled-components";
 
-export const Card = styled.div`
-  border-radius: ${({ theme }) => theme.borderRadius.default};
-  background-color: ${({ theme }) => theme.colors.white};
-  display: flex;
-  flex-direction: column;
-`;
-export const Wrapper = styled.div`
-  padding: 20px;
+interface IWrapper {
+  hasDetails: boolean;
+}
+
+export const Wrapper = styled.div<IWrapper>`
+  padding: ${({ hasDetails }) => (hasDetails ? "0" : "20px")};
   display: flex;
   justify-content: flex-start;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
+  border-bottom: 1px solid
+    ${({ theme, hasDetails }) => (hasDetails ? "none" : theme.colors.gray)};
 `;
 export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
-
+  h4 {
+    font-weight: 500;
+    font-size: ${({ theme }) => theme.fontSize.lg};
+  }
   .user-info {
     margin-top: 6px;
     display: flex;
@@ -30,9 +32,16 @@ export const InnerWrapper = styled.div`
     margin-top: auto;
   }
 `;
-export const ImageContainer = styled.figure`
-  height: 76px;
-  width: 76px;
+export const StyledHeading = styled.h3`
+  font-size: ${({ theme }) => theme.fontSize.xl};
+`;
+type IContainer = {
+  isBig: boolean;
+};
+
+export const ImageContainer = styled.figure<IContainer>`
+  height: ${({ isBig }) => (isBig ? "120px" : "76px")};
+  width: ${({ isBig }) => (isBig ? "120px" : "76px")};
   border-radius: ${({ theme }) => theme.borderRadius.default};
   overflow: hidden;
   margin-right: 12px;

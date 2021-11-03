@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   height: 100vh;
   margin: 0;
   padding: 30px;
-  overflow: hidden;
-  background: ${({ theme }) => theme.colors.black};
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: ${({ theme }) => theme.colors.gray};
 `;

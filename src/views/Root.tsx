@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import MainTemplate from "components/templates/MainTemplate/MainTemplate";
 import { Wrapper } from "./Root.styles";
+import { UserDetails } from "./UserDetails";
 
 const Root = () => {
   return (
@@ -17,6 +18,9 @@ const Root = () => {
             <Switch>
               <Route exact path="/">
                 <Home />
+              </Route>
+              <Route path="/users/:username">
+                <UserDetails />
               </Route>
             </Switch>
           </Wrapper>
