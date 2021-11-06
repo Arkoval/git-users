@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const useUsers = () => {
+const useUsers = () => {
   const getUsers = async (lastID: number) => {
     try {
       const { data } = await axios.get(

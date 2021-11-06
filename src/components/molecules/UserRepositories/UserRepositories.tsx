@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyledList, Wrapper } from "./UserRepositories.styles";
 
 interface IRepo {
@@ -7,6 +7,9 @@ interface IRepo {
 }
 
 export const UserRepositories = ({ repos, repoNum }: IRepo) => {
+  useEffect(() => {
+    console.log(repos);
+  }, [repos]);
   return (
     <Wrapper>
       <h3>

@@ -1,17 +1,30 @@
-import { ActionType } from '../action-types';
+import {
+  FetchDetailsFailure,
+  FetchDetailsInit,
+  FetchDetailsSuccess,
+} from "./fetchDetails";
+import {
+  FetchReposFailure,
+  FetchReposInit,
+  FetchReposSuccess,
+} from "./fetchRepos";
+import {
+  FetchUsersFailure,
+  FetchUsersInit,
+  FetchUsersSuccess,
+} from "./fetchUsers";
 
-interface DepositAction {
-    type: ActionType.DEPOSIT,
-    payload: number
-}
+export type ActionUsers =
+  | FetchUsersInit
+  | FetchUsersSuccess
+  | FetchUsersFailure;
 
-interface WithdrawAction {
-    type: ActionType.WITHDRAW,
-    payload: number
-}
+export type ActionDetails =
+  | FetchDetailsInit
+  | FetchDetailsSuccess
+  | FetchDetailsFailure;
 
-interface BankruptAction {
-    type: ActionType.BANKRUPT
-}
-
-export type Action = DepositAction | WithdrawAction | BankruptAction;
+export type ActionRepos =
+  | FetchReposInit
+  | FetchReposSuccess
+  | FetchReposFailure;

@@ -2,10 +2,12 @@ import axios from "axios";
 import { Heading } from "components/atoms/Heading/Heading";
 import { UserCard } from "components/molecules/UserCard/UserCard";
 import { UserRepositories } from "components/molecules/UserRepositories/UserRepositories";
-import { useUsers } from "hooks/useUsers";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { IGithub } from "types/github";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "store";
+import { RootState } from "store/reducers";
 import { StyledHeading, UserWrapper, Wrapper } from "./UserDetails.styles";
 
 interface IUser {
@@ -18,26 +20,28 @@ interface IUser {
 }
 
 export const UserDetails = () => {
-  const [user, setUser] = useState<IUser | null>(null);
-  const [repos, setRepos] = useState<string[]>([]);
+  const { userDetails: user } = useSelector(
+    (state: RootState) => state.userDetails
+  );
+  const { userRepos: repos } = useSelector(
+    (state: RootState) => state.userRepos
+  );
   const { username } = useParams<{ username: string }>();
-  const { getUserDetails, getUserRepos } = useUsers();
+  const dispatch = useDispatch();
+
+  const { fetchDetails, fetchRepos } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   useEffect(() => {
-    (async () => {
-      const data = await getUserDetails(username);
-      setUser(data);
-    })();
-    (async () => {
-      const data = await getUserRepos(username);
-      setRepos(data);
-    })();
+    fetchDetails(username);
   }, []);
-
   return (
     <Wrapper>
       <Heading isBold>Profile</Heading>
-      {user !== null ? (
+      <button onClick={() => fetchDetails(username)}>teste</button>
+      {user ? (
         <UserWrapper>
           <UserCard
             id={user.id}
@@ -48,7 +52,7 @@ export const UserDetails = () => {
             link={user.url}
           />
           <StyledHeading>Repositories</StyledHeading>
-          <UserRepositories repos={repos} repoNum={user.public_repos} />
+          {/* <UserRepositories repos={repos} repoNum={user.public_repos} /> */}
         </UserWrapper>
       ) : (
         <span>Loading data</span>
