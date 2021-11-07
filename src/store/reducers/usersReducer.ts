@@ -22,11 +22,17 @@ const usersReducer: Reducer = (state = initialState, action: ActionUsers) => {
         pending: true,
       };
     case ActionType.FETCH_USERS_SUCCESS:
-      console.log(action.payload);
       return {
         ...state,
         pending: false,
         users: action.payload,
+      };
+    case ActionType.FETCH_USERS_UPDATE:
+      console.log(state.users);
+      return {
+        ...state,
+        pending: false,
+        users: [...state.users, ...action.payload],
       };
     case ActionType.FETCH_USERS_FAILURE:
       return {

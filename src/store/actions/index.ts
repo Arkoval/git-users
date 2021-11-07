@@ -12,10 +12,12 @@ import {
   FetchUsersFailure,
   FetchUsersInit,
   FetchUsersSuccess,
+  FetchUsersUpdate,
 } from "./fetchUsers";
 
 export type ActionUsers =
   | FetchUsersInit
+  | FetchUsersUpdate
   | FetchUsersSuccess
   | FetchUsersFailure;
 

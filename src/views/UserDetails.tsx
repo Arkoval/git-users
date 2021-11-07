@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Heading } from "components/atoms/Heading/Heading";
+import { Spinner } from "components/atoms/Spinner/Spinner";
 import { UserCard } from "components/molecules/UserCard/UserCard";
 import { UserRepositories } from "components/molecules/UserRepositories/UserRepositories";
 import React, { useEffect, useState } from "react";
@@ -23,25 +24,23 @@ export const UserDetails = () => {
   const { userDetails: user } = useSelector(
     (state: RootState) => state.userDetails
   );
-  const { userRepos: repos } = useSelector(
-    (state: RootState) => state.userRepos
-  );
   const { username } = useParams<{ username: string }>();
   const dispatch = useDispatch();
 
-  const { fetchDetails, fetchRepos } = bindActionCreators(
-    actionCreators,
-    dispatch
-  );
+  const { fetchDetails } = bindActionCreators(actionCreators, dispatch);
 
   useEffect(() => {
-    fetchDetails(username);
+    if (!user.login) {
+      fetchDetails(username);
+    }
   }, []);
+
   return (
     <Wrapper>
       <Heading isBold>Profile</Heading>
-      <button onClick={() => fetchDetails(username)}>teste</button>
-      {user ? (
+      {!user.login ? (
+        <Spinner />
+      ) : (
         <UserWrapper>
           <UserCard
             id={user.id}
@@ -52,10 +51,8 @@ export const UserDetails = () => {
             link={user.url}
           />
           <StyledHeading>Repositories</StyledHeading>
-          {/* <UserRepositories repos={repos} repoNum={user.public_repos} /> */}
+          <UserRepositories user={user.login} repoNum={user.public_repos} />
         </UserWrapper>
-      ) : (
-        <span>Loading data</span>
       )}
     </Wrapper>
   );

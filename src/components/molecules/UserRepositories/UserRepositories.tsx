@@ -1,15 +1,28 @@
+import { Spinner } from "components/atoms/Spinner/Spinner";
 import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators, store } from "store";
+import { RootState } from "store/reducers";
 import { StyledList, Wrapper } from "./UserRepositories.styles";
 
 interface IRepo {
-  repos: string[];
+  user: string;
   repoNum: number;
 }
 
-export const UserRepositories = ({ repos, repoNum }: IRepo) => {
+export const UserRepositories = ({ user, repoNum }: IRepo) => {
+  const state = useSelector((state: RootState) => state.userRepos);
+  const dispatch = useDispatch();
+
+  const { fetchRepos } = bindActionCreators(actionCreators, dispatch);
+
   useEffect(() => {
-    console.log(repos);
-  }, [repos]);
+    if (user) {
+      fetchRepos(user);
+    }
+  }, [user]);
+
   return (
     <Wrapper>
       <h3>
@@ -17,9 +30,13 @@ export const UserRepositories = ({ repos, repoNum }: IRepo) => {
       </h3>
       <h3>Repositories list:</h3>
       <StyledList>
-        {repos.map((repo) => (
-          <li key={repo}>{repo}</li>
-        ))}
+        {state.pending ? (
+          <Spinner />
+        ) : (
+          state.repos.map((repo: { name: string }) => (
+            <li key={repo.name}>{repo.name}</li>
+          ))
+        )}
       </StyledList>
     </Wrapper>
   );

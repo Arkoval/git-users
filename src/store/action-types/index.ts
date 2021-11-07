@@ -1,5 +1,6 @@
 export enum ActionType {
   FETCH_USERS_INIT = "userList/fetchInit",
+  FETCH_USERS_UPDATE = "userList/fetchUpdate",
   FETCH_USERS_SUCCESS = "userList/fetchSuccess",
   FETCH_USERS_FAILURE = "userList/fetchFailure",
 

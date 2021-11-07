@@ -16,14 +16,16 @@ import {
   fetchUsersFailure,
   fetchUsersInit,
   fetchUsersSuccess,
+  fetchUsersUpdate,
 } from "./fetchUsers";
 
-export const fetchUsers = () => {
+export const fetchUsers = (number = 0) => {
   return async (dispatch: ThunkDispatch<IGithub, void, ActionUsers>) => {
     dispatch(fetchUsersInit());
     try {
-      const res = await githubService.getUsers();
-      dispatch(fetchUsersSuccess(res));
+      const res = await githubService.getUsers(number);
+      if (number) dispatch(fetchUsersUpdate(res));
+      else dispatch(fetchUsersSuccess(res));
     } catch (err) {
       dispatch(fetchUsersFailure(err));
     }

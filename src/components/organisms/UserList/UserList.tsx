@@ -1,5 +1,6 @@
 import { Button } from "components/atoms/Button/Button";
 import { UserCard } from "components/molecules/UserCard/UserCard";
+import { useObserver } from "hooks/useObserver";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -14,25 +15,31 @@ export const UserList = ({
 }: {
   users: IGithub[];
 }): React.ReactElement => {
-  // const { user } = useSelector((state: RootState) => state.userDetails);
-  // const dispatch = useDispatch();
-
-  // const { fetchDetails } = bindActionCreators(actionCreators, dispatch);
+  const dispatch = useDispatch();
+  const { container } = useObserver({
+    root: null,
+    rootMargin: "0px",
+    threshold: 1.0,
+  });
+  const { fetchDetails } = bindActionCreators(actionCreators, dispatch);
 
   return (
     <Wrapper>
       {users.map((user) => {
         return (
-          <CardWrapper key={user.login}>
+          <CardWrapper ref={container} key={user.login}>
             <UserCard
               id={user.id}
               login={user.login}
               thumbnail={user.avatar_url}
               link={user.url}
             />
-            {/* <button onClick={() => fetchDetails(user.login)}>test</button> */}
-            <Link to={`/users/${user.login}`}>test</Link>
-            {/* <Button to={`/users/${user.login}`}>Details</Button> */}
+            <Button
+              to={`/users/${user.login}`}
+              onClick={() => fetchDetails(user.login)}
+            >
+              Details
+            </Button>
           </CardWrapper>
         );
       })}

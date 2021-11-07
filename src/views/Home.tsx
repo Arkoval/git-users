@@ -1,4 +1,6 @@
+import { Spinner } from "components/atoms/Spinner/Spinner";
 import { UserList } from "components/organisms/UserList/UserList";
+import { useObserver } from "hooks/useObserver";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -13,15 +15,14 @@ const Home = () => {
   const { fetchUsers } = bindActionCreators(actionCreators, dispatch);
 
   useEffect(() => {
-    fetchUsers();
+    if (state.users) {
+      fetchUsers();
+    } else fetchUsers(state.users.id);
   }, []);
   return (
     <Wrapper>
-      {state.users ? (
-        <UserList users={state.users} />
-      ) : (
-        <span>Unexpected error</span>
-      )}
+      <UserList users={state.users} />
+      {state.pending ? <Spinner /> : null}
     </Wrapper>
   );
 };

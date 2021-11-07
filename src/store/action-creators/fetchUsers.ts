@@ -18,6 +18,14 @@ export const fetchUsersSuccess = (users: string[]) => {
     });
   };
 };
+export const fetchUsersUpdate = (users: string[]) => {
+  return (dispatch: Dispatch<ActionUsers>) => {
+    dispatch({
+      type: ActionType.FETCH_USERS_UPDATE,
+      payload: users,
+    });
+  };
+};
 
 export const fetchUsersFailure = (error: unknown) => {
   return (dispatch: Dispatch<ActionUsers>) => {

@@ -12,8 +12,8 @@ class GithubService {
     });
     return instance;
   }
-  async getUsers() {
-    const response = await this.http.get("/users");
+  async getUsers(since: number) {
+    const response = await this.http.get(`/users?per_page=36&since=${since}`);
     if (response.status === 200) return response.data;
     else return "An error occured";
   }
