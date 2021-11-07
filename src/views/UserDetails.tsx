@@ -1,9 +1,8 @@
-import axios from "axios";
 import { Heading } from "components/atoms/Heading/Heading";
 import { Spinner } from "components/atoms/Spinner/Spinner";
 import { UserCard } from "components/molecules/UserCard/UserCard";
 import { UserRepositories } from "components/molecules/UserRepositories/UserRepositories";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { bindActionCreators } from "redux";

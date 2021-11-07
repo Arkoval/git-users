@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "store";
@@ -20,10 +20,8 @@ export const useObserver = (options: IOptions) => {
   const fetchMoreUsers: IntersectionObserverCallback = (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log(state.users[state.users.length - 1].id);
       fetchUsers(state.users[state.users.length - 1].id);
     }
-    // if (entry.isIntersecting) fetchUsers(state[state.length - 1].id);
   };
   useEffect(() => {
     const observer = new IntersectionObserver(fetchMoreUsers, options);

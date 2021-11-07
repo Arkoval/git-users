@@ -1,8 +1,8 @@
 import { Spinner } from "components/atoms/Spinner/Spinner";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import { actionCreators, store } from "store";
+import { actionCreators } from "store";
 import { RootState } from "store/reducers";
 import { StyledList, Wrapper } from "./UserRepositories.styles";
 

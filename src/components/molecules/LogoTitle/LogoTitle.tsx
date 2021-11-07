@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import { ReactElement } from "react";
 import { ReactComponent as Icon } from "assets/icons/github.svg";
 import { Heading } from "components/atoms/Heading/Heading";
 import { Wrapper } from "./LogoTitle.styles";

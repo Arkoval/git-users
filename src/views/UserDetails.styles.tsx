@@ -1,4 +1,3 @@
-import { Heading } from "components/atoms/Heading/Heading";
 import styled from "styled-components";
 
 export const Wrapper = styled.main`

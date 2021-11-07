@@ -1,4 +1,3 @@
-import * as React from "react";
 import { StyledHeading } from "./Heading.styles";
 
 type HeadingProps = {

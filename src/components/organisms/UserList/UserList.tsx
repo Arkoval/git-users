@@ -2,11 +2,9 @@ import { Button } from "components/atoms/Button/Button";
 import { UserCard } from "components/molecules/UserCard/UserCard";
 import { useObserver } from "hooks/useObserver";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "store";
-import { RootState } from "store/reducers";
 import { IGithub } from "types/github";
 import { CardWrapper, Wrapper } from "./UserList.styles";
 

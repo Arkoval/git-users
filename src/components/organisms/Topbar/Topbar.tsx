@@ -1,6 +1,5 @@
 import { LogoTitle } from "components/molecules/LogoTitle/LogoTitle";
-import React, { useEffect } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Wrapper } from "./Tobpar.styles";
 
 export const Topbar = () => {
