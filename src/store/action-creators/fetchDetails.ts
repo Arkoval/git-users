@@ -3,7 +3,7 @@ import { ActionType } from "store/action-types";
 import { ActionDetails } from "store/actions";
 
 export const fetchDetailsInit = () => {
-  return (dispatch: Dispatch<ActionDetails>) => {
+  return (dispatch: Dispatch<ActionDetails>): void => {
     dispatch({
       type: ActionType.FETCH_DETAILS_INIT,
     });
@@ -11,7 +11,7 @@ export const fetchDetailsInit = () => {
 };
 
 export const fetchDetailsSuccess = (user: string[]) => {
-  return (dispatch: Dispatch<ActionDetails>) => {
+  return (dispatch: Dispatch<ActionDetails>): void => {
     dispatch({
       type: ActionType.FETCH_DETAILS_SUCCESS,
       payload: user,
@@ -20,7 +20,7 @@ export const fetchDetailsSuccess = (user: string[]) => {
 };
 
 export const fetchDetailsFailure = (error: unknown) => {
-  return (dispatch: Dispatch<ActionDetails>) => {
+  return (dispatch: Dispatch<ActionDetails>): void => {
     dispatch({
       type: ActionType.FETCH_DETAILS_FAILURE,
       payload: error,

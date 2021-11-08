@@ -1,7 +1,7 @@
-import React from "react";
+import { ReactElement } from "react";
 import { StyledSpinner, Wrapper } from "./Spinner.styles";
 
-export const Spinner = () => {
+export const Spinner = (): ReactElement => {
   return (
     <Wrapper>
       <StyledSpinner />

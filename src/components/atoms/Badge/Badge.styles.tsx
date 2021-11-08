@@ -1,14 +1,12 @@
 import styled from "styled-components";
+import { Props } from "./Badge.types";
 
-interface Props {
-  teams: "Team A" | "Team B" | "Team C" | undefined;
-}
 export const StyledBadge = styled.span<Props>`
   display: ${({ teams }) => (teams ? "inline" : "none")};
   color: ${({ theme }) => theme.colors.button};
   padding: 2px 4px;
   font-size: ${({ theme }) => theme.fontSize.sm};
-  border-radius: ${({ theme }) => theme.borderRadius.default};
+  border-radius: ${({ theme }) => theme.borderRadius.small};
   margin-right: 6px;
   background: ${({ teams, theme }) => {
     if (teams === "Team A") return theme.colors.aBackground;

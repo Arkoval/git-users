@@ -4,16 +4,15 @@ import { theme } from "assets/styles/theme";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import MainTemplate from "components/templates/MainTemplate/MainTemplate";
-import { Wrapper } from "./Root.styles";
 import { UserDetails } from "./UserDetails";
 
-const Root = () => {
+const Root: React.FC = () => {
   return (
     <Router>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MainTemplate>
-          <Wrapper>
+          <div>
             <Switch>
               <Route exact path="/">
                 <Home />
@@ -22,7 +21,7 @@ const Root = () => {
                 <UserDetails />
               </Route>
             </Switch>
-          </Wrapper>
+          </div>
         </MainTemplate>
       </ThemeProvider>
     </Router>

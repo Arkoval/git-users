@@ -3,7 +3,7 @@ import { ActionType } from "store/action-types";
 import { ActionRepos } from "store/actions";
 
 export const fetchReposInit = () => {
-  return (dispatch: Dispatch<ActionRepos>) => {
+  return (dispatch: Dispatch<ActionRepos>): void => {
     dispatch({
       type: ActionType.FETCH_REPOS_INIT,
     });
@@ -11,7 +11,7 @@ export const fetchReposInit = () => {
 };
 
 export const fetchReposSuccess = (repos: string[]) => {
-  return (dispatch: Dispatch<ActionRepos>) => {
+  return (dispatch: Dispatch<ActionRepos>): void => {
     dispatch({
       type: ActionType.FETCH_REPOS_SUCCESS,
       payload: repos,
@@ -20,7 +20,7 @@ export const fetchReposSuccess = (repos: string[]) => {
 };
 
 export const fetchReposFailure = (error: unknown) => {
-  return (dispatch: Dispatch<ActionRepos>) => {
+  return (dispatch: Dispatch<ActionRepos>): void => {
     dispatch({
       type: ActionType.FETCH_REPOS_FAILURE,
       payload: error,

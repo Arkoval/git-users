@@ -1,18 +1,14 @@
 import { Button } from "components/atoms/Button/Button";
 import { UserCard } from "components/molecules/UserCard/UserCard";
 import { useObserver } from "hooks/useObserver";
-import React from "react";
+import { ReactElement } from "react";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "store";
 import { IGithub } from "types/github";
 import { CardWrapper, Wrapper } from "./UserList.styles";
 
-export const UserList = ({
-  users,
-}: {
-  users: IGithub[];
-}): React.ReactElement => {
+export const UserList = ({ users }: { users: IGithub[] }): ReactElement => {
   const dispatch = useDispatch();
   const { container } = useObserver({
     root: null,

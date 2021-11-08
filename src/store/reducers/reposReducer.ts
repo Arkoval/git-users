@@ -1,14 +1,9 @@
 import { Reducer } from "redux";
+import { IReducerState } from "types/reducers";
 import { ActionType } from "../action-types";
 import { ActionRepos } from "../actions";
 
-interface IState {
-  pending: boolean;
-  repos: string[];
-  error: string | null | unknown;
-}
-
-const initialState: IState = {
+const initialState: IReducerState | { repos: string[] } = {
   pending: false,
   repos: [],
   error: null,

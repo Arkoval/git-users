@@ -1,12 +1,8 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { StyledBadge } from "./Badge.styles";
+import { Teams } from "./Badge.types";
 
-interface BadgeProps {
-  readonly id: number;
-}
-type Teams = "Team A" | "Team B" | "Team C";
-
-export const Badge = ({ id }: BadgeProps): ReactElement => {
+export const Badge = ({ id }: { id: number }): ReactElement => {
   const [teams, setTeams] = useState<Teams>();
 
   const chooseTeam = () => {

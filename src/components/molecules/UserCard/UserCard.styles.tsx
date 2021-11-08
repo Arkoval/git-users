@@ -1,20 +1,13 @@
 import styled from "styled-components";
 
-interface IWrapper {
-  hasDetails: boolean;
-}
-type IContainer = {
-  isBig: boolean;
-};
-
-export const Wrapper = styled.div<IWrapper>`
+export const Wrapper = styled.div<{ hasDetails: boolean }>`
   padding: ${({ hasDetails }) => (hasDetails ? "0" : "10px")};
   display: flex;
   justify-content: flex-start;
   border-bottom: 1px solid
     ${({ theme, hasDetails }) => (hasDetails ? "none" : theme.colors.gray)};
   @media screen and (min-width: 420px) and (max-width: 520px) {
-    max-width: 190px;
+    max-width: ${({ hasDetails }) => (hasDetails ? "none" : "190px")};
   }
   @media screen and (min-width: 840px) {
     padding: ${({ hasDetails }) => (hasDetails ? "0" : "20px")};
@@ -50,7 +43,7 @@ export const StyledHeading = styled.h3`
   font-size: ${({ theme }) => theme.fontSize.xl};
 `;
 
-export const ImageContainer = styled.figure<IContainer>`
+export const ImageContainer = styled.figure<{ isBig: boolean }>`
   height: ${({ isBig }) => (isBig ? "120px" : "76px")};
   width: ${({ isBig }) => (isBig ? "120px" : "76px")};
   border-radius: ${({ theme }) => theme.borderRadius.default};

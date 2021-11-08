@@ -20,7 +20,9 @@ import {
 } from "./fetchUsers";
 
 export const fetchUsers = (number = 0) => {
-  return async (dispatch: ThunkDispatch<IGithub, void, ActionUsers>) => {
+  return async (
+    dispatch: ThunkDispatch<IGithub, void, ActionUsers>
+  ): Promise<void> => {
     dispatch(fetchUsersInit());
     try {
       const res = await githubService.getUsers(number);
@@ -32,7 +34,9 @@ export const fetchUsers = (number = 0) => {
   };
 };
 export const fetchDetails = (username: string) => {
-  return async (dispatch: ThunkDispatch<IGithub, void, ActionDetails>) => {
+  return async (
+    dispatch: ThunkDispatch<IGithub, void, ActionDetails>
+  ): Promise<void> => {
     dispatch(fetchDetailsInit());
     try {
       const res = await githubService.getDetails(username);
@@ -43,7 +47,9 @@ export const fetchDetails = (username: string) => {
   };
 };
 export const fetchRepos = (username: string) => {
-  return async (dispatch: ThunkDispatch<IGithub, void, ActionRepos>) => {
+  return async (
+    dispatch: ThunkDispatch<IGithub, void, ActionRepos>
+  ): Promise<void> => {
     dispatch(fetchReposInit());
     try {
       const res = await githubService.getRepos(username);

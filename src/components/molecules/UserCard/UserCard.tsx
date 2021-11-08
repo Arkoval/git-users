@@ -1,5 +1,5 @@
 import { Badge } from "components/atoms/Badge/Badge";
-import React from "react";
+import { ReactElement } from "react";
 import { ReactComponent as Icon } from "assets/icons/github.svg";
 import {
   ImageContainer,
@@ -8,14 +8,7 @@ import {
   StyledHeading,
   Wrapper,
 } from "./UserCard.styles";
-
-interface IUser {
-  id: number;
-  login: string;
-  name?: string;
-  link: string;
-  thumbnail: string;
-}
+import { IUser } from "./UserCard.types";
 
 export const UserCard = ({
   id,
@@ -23,7 +16,7 @@ export const UserCard = ({
   name,
   link,
   thumbnail,
-}: IUser): React.ReactElement => {
+}: IUser): ReactElement => {
   return (
     <Wrapper hasDetails={!!name}>
       <ImageContainer isBig={!!name}>
@@ -40,7 +33,7 @@ export const UserCard = ({
           <Badge id={id} />
           <p>ID: #{id}</p>
         </div>
-        <LogoLink href={link} target="_blank">
+        <LogoLink href={link}>
           <Icon />
           GitHub page
         </LogoLink>

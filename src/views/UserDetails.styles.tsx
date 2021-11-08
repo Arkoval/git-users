@@ -6,10 +6,17 @@ export const Wrapper = styled.main`
   max-width: 1130px;
   height: 600px;
   padding: 20px;
+  border-radius: ${({ theme }) => theme.borderRadius.default};
+
   @media screen and (min-width: 800px) {
+    margin: 30px;
+  }
+
+  @media screen and (min-width: 1130px) {
     margin: 30px auto;
   }
 `;
+
 export const UserWrapper = styled.div`
   margin-top: 12px;
 `;

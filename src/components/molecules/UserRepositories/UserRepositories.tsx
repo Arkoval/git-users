@@ -1,17 +1,13 @@
 import { Spinner } from "components/atoms/Spinner/Spinner";
-import { useEffect } from "react";
+import { ReactElement, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "store";
 import { RootState } from "store/reducers";
 import { StyledList, Wrapper } from "./UserRepositories.styles";
+import { IRepo } from "./UserRepositories.types";
 
-interface IRepo {
-  user: string;
-  repoNum: number;
-}
-
-export const UserRepositories = ({ user, repoNum }: IRepo) => {
+export const UserRepositories = ({ user, repoNum }: IRepo): ReactElement => {
   const state = useSelector((state: RootState) => state.userRepos);
   const dispatch = useDispatch();
 
