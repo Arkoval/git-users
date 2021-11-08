@@ -30,7 +30,7 @@ export const UserList = ({
               id={user.id}
               login={user.login}
               thumbnail={user.avatar_url}
-              link={user.url}
+              link={user.html_url}
             />
             <Button
               to={`/users/${user.login}`}

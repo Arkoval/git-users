@@ -47,7 +47,7 @@ export const UserDetails = () => {
             name={user.name}
             login={user.login}
             thumbnail={user.avatar_url}
-            link={user.url}
+            link={user.html_url}
           />
           <StyledHeading>Repositories</StyledHeading>
           <UserRepositories user={user.login} repoNum={user.public_repos} />

@@ -40,7 +40,7 @@ export const UserCard = ({
           <Badge id={id} />
           <p>ID: #{id}</p>
         </div>
-        <LogoLink href={link}>
+        <LogoLink href={link} target="_blank">
           <Icon />
           GitHub page
         </LogoLink>

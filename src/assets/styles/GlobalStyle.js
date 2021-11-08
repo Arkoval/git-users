@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'Barlow', sans-serif;
     font-size: ${({ theme }) => theme.fontSize.m};
+    background:  ${({ theme }) => theme.colors.gray};
   }
   h1,h2,h3,h4,h5,h6,p,a,label,button,div,figure {
     margin: 0;

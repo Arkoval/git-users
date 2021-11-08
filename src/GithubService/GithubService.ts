@@ -6,7 +6,9 @@ class GithubService {
   get http() {
     const instance = axios.create({
       baseURL: `${baseURL}`,
-      headers: {},
+      headers: {
+        Authorization: `${process.env.GITHUB_TOKEN}`,
+      },
       validateStatus: () => true,
     });
     return instance;

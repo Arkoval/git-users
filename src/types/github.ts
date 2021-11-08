@@ -3,6 +3,5 @@ export interface IGithub {
   id: number;
   login: string;
   repos_url: string;
-  type: string;
-  url: string;
+  html_url: string;
 }

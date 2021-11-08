@@ -7,6 +7,7 @@ export const StyledBadge = styled.span<Props>`
   display: ${({ teams }) => (teams ? "inline" : "none")};
   color: ${({ theme }) => theme.colors.button};
   padding: 2px 4px;
+  font-size: ${({ theme }) => theme.fontSize.sm};
   border-radius: ${({ theme }) => theme.borderRadius.default};
   margin-right: 6px;
   background: ${({ teams, theme }) => {
